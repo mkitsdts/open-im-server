@@ -34,7 +34,7 @@ func TestName1111(t *testing.T) {
 
 	pipeline := mongo.Pipeline{
 		{
-			{"$set", bson.M{
+			{Key: "$set", Value: bson.M{
 				"value": bson.M{
 					"$toString": bson.M{
 						"$add": bson.A{

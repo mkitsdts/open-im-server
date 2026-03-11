@@ -16,10 +16,11 @@ package mgo
 
 import (
 	"context"
+	"time"
+
 	"github.com/openimsdk/open-im-server/v3/pkg/common/storage/database"
 	"github.com/openimsdk/open-im-server/v3/pkg/common/storage/model"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"time"
 
 	"github.com/openimsdk/tools/db/mongoutil"
 	"github.com/openimsdk/tools/db/pagination"
@@ -55,7 +56,7 @@ func NewFriendMongo(db *mongo.Database) (database.Friend, error) {
 }
 
 func (f *FriendMgo) friendSort() any {
-	return bson.D{{"is_pinned", -1}, {"_id", 1}}
+	return bson.D{{Key: "is_pinned", Value: -1}, {Key: "_id", Value: 1}}
 }
 
 // Create inserts multiple friend records.

@@ -102,7 +102,7 @@ func (x *CacheMgo) Set(ctx context.Context, key string, value string, expireAt t
 func (x *CacheMgo) Incr(ctx context.Context, key string, value int) (int, error) {
 	pipeline := mongo.Pipeline{
 		{
-			{"$set", bson.M{
+			{Key: "$set", Value: bson.M{
 				"value": bson.M{
 					"$toString": bson.M{
 						"$add": bson.A{
